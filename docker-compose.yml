@@ -1,0 +1,23 @@
+version: '3'
+services:
+  frontend:
+    image: frontend:${TAG}
+    build:
+      context: ./frontend
+      dockerfile: ./Dockerfile
+    ports:
+      - 8080:3000
+    environment:
+      - BACKEND_ADDRESS
+      - REDIS_ADDRESS
+  backend:
+    image: backend:${TAG}
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile
+    ports:
+      - 8081:3000
+  redis:
+    image: "redis:alpine"
+    ports:
+      - 6379:6379
