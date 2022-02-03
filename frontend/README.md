@@ -25,3 +25,17 @@ az containerapp create \
     # --registry-password ..
 
 ```
+
+
+## Part 2
+
+```bash
+az containerapp create \
+    --name frontend \
+    --resource-group $RESOURCE_GROUP \
+    --image $IMAGE \
+    --environment $CONTAINERAPPS_ENVIRONMENT \
+    --ingress 'external' \
+    --target-port 3000 \
+    --environment-variables BACKEND_ADDRESS='http://backend:3000',REDIS_ADDRESS='redis:6379'
+```
